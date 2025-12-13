@@ -8,7 +8,7 @@ import unicodedata
 QUESTIONS = fetch("questions.json")
   .then(res => res.json())
   .then(data => {
-    console.log("Perguntas carregadas:", data);
+    console.log("Perguntas:", data);
   });
 
 def normalize(s: str) -> str:
@@ -37,12 +37,12 @@ def play_round(question, answers):
     teams = ["A", "B"]
 
     while not all(revealed) and strikes < 3:
-        print(f"\nVez do Time {teams[current_team]}. (digite 'pular' para passar, 'sair' para encerrar jogo)")
-        guess = input("Faça uma adivinhação: ").strip()
+        print(f"\nVez do Time {teams[current_team]}. (escreva 'passar' para passar, 'sair' para terminar o jogo)")
+        guess = input("Pode fazer una tentativa: ").strip()
         if guess.lower() == "sair":
-            print("Encerrando jogo.")
+            print("Jogo terminado.")
             exit(0)
-        if guess.lower() == "pular":
+        if guess.lower() == "passar":
             current_team = 1 - current_team
             print(f"Passou para o Time {teams[current_team]}.")
             continue
@@ -69,14 +69,14 @@ def play_round(question, answers):
     if strikes >= 3:
         stealing_team = 1 - current_team
         print(f"\nTrês strikes! Time {teams[stealing_team]} pode tentar roubar.")
-        steal_guess = input("Time roubando — faça uma resposta: ").strip()
+        steal_guess = input("Time roubando — d uma resposta: ").strip()
         if normalize(steal_guess) in [normalize(a) for (a, _) in answers if not revealed[answers.index((a, _))]]:
             # encontrar e somar pontos não-revelados (a versão original soma todos os pontos que estavam revelados)
             # Aqui aplicamos regra: se o ladrão acertar, leva os pontos acumulados na rodada
-            print("Roubo bem-sucedido! Time roubou os pontos da rodada.")
+            print("Roubo bem-sucedido! Time roubou os pontos da ronda.")
             return stealing_team, round_score
         else:
-            print("Roubo falhou. Time original mantém os pontos da rodada.")
+            print("Roubo falhou. Time original mantém os pontos da ronda.")
             # time que estava jogando antes dos strikes ganha
             owner_team = current_team
             return owner_team, round_score
@@ -84,7 +84,7 @@ def play_round(question, answers):
         # nenhuma strike e esgotou respostas -> time que estava na vez ganha os pontos
         # (na versão real, o time que estava em controle ao final fica com os pontos)
         owner_team = current_team
-        print("\nTodas as respostas foram reveladas ou a rodada acabou.")
+        print("\nTodas as respostas foram reveladas ou a ronda acabou.")
         return owner_team, round_score
 
 def main():
@@ -102,9 +102,9 @@ def main():
 
         winner_team, pts = play_round(q, indexed_answers)
         scores[winner_team] += pts
-        print(f"\nTime {'A' if winner_team==0 else 'B'} ganhou {pts} pontos nesta rodada.")
+        print(f"\nTime {'A' if winner_team==0 else 'B'} ganhou {pts} pontos nesta ronda.")
         print(f"PLACAR: Time A = {scores[0]} | Time B = {scores[1]}")
-        input("\nPressione Enter para próxima rodada...")
+        input("\nPressione Enter para próxima ronda...")
 
     print("\nFIM DO JOGO!")
     print(f"Placar final: Time A = {scores[0]} | Time B = {scores[1]}")
