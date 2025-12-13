@@ -84,8 +84,8 @@ swapTurnBtn.addEventListener('click', () => {
   turn = (turn === "A") ? "B" : "A";
   updateTurnLabel();
 });
-const cheerSound = new Audio('./static/applause.mp3'); 
-const errorSound = new Audio('./static/error.mp3'); 
+const cheerSound = new Audio('/static/applause.mp3'); 
+const errorSound = new Audio('/static/error.mp3'); 
 
 document.getElementById('revealBtn').addEventListener('click', () => {
     const hidden = answersEl.querySelector('.answer.hidden');
