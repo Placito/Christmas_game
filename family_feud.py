@@ -5,29 +5,11 @@ import random
 import unicodedata
 
 # Base de perguntas: "pergunta": [(resposta, pontos), ...]
-QUESTIONS = {
-    "Coisas que as pessoas deixam no carro": [
-        ("celular", 30),
-        ("garrafa de água", 25),
-        ("óculos", 20),
-        ("carteira", 15),
-        ("sacola de compras", 10),
-    ],
-    "O que se encontra em uma cozinha": [
-        ("fogão", 35),
-        ("geladeira", 30),
-        ("pia", 20),
-        ("micro-ondas", 10),
-        ("armário", 5),
-    ],
-    "Motivos para chegar atrasado": [
-        ("trânsito", 40),
-        ("acidente", 20),
-        ("ônibus atrasado", 15),
-        ("problema com o carro", 15),
-        ("esquecer algo em casa", 10),
-    ],
-}
+QUESTIONS = fetch("questions.json")
+  .then(res => res.json())
+  .then(data => {
+    console.log("Perguntas carregadas:", data);
+  });
 
 def normalize(s: str) -> str:
     s = s.strip().casefold()
