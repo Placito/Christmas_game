@@ -1,73 +1,293 @@
 [
     {
-      "question": "Coisas que as pessoas deixam no carro?",
+      "question": "Algo que as pessoas fazem logo ao acordar",
       "answers": [
-        { "text": "Telemóvel", "pts": 30 },
-        { "text": "Garrafa de água", "pts": 25 },
-        { "text": "Óculos", "pts": 20 },
-        { "text": "Carteira", "pts": 15 },
-        { "text": "Saco de compras", "pts": 10 }
+        { "text": "Desligar o despertador", "pts": 35 },
+        { "text": "Ir à casa de banho", "pts": 30 },
+        { "text": "Ver o telemóvel", "pts": 20 },
+        { "text": "Tomar pequeno-almoço", "pts": 10 },
+        { "text": "Tomar banho", "pts": 5 }
       ]
     },
     {
-      "question": "O que se encontra numa cozinha?",
+      "question": "Algo que se encontra numa casa portuguesa",
       "answers": [
-        { "text": "Fogão", "pts": 35 },
-        { "text": "Frigorifico", "pts": 30 },
-        { "text": "Lava-loiça", "pts": 20 },
-        { "text": "Micro-ondas", "pts": 10 },
-        { "text": "Armário", "pts": 5 }
+        { "text": "Sofá", "pts": 30 },
+        { "text": "Televisão", "pts": 25 },
+        { "text": "Mesa", "pts": 20 },
+        { "text": "Tapete", "pts": 15 },
+        { "text": "Estante", "pts": 10 }
       ]
     },
-{
-          "question": "Algo que as pessoas fazem logo ao acordar?",
-          "answers": [
-            { "text": "Tomar pequeno-almoço", "pts": 35 },
-            { "text": "Ir à casa de banho", "pts": 30 },
-            { "text": "Ver o telemóvel", "pts": 20 },
-            { "text": "Tomar banho", "pts": 10 },
-            { "text": "Desligar o despertador", "pts": 5 }
-          ]
-        },
-        {
-          "question": "Algo que se encontra numa casa portuguesa?",
-          "answers": [
-            { "text": "Sofá", "pts": 30 },
-            { "text": "Televisão", "pts": 25 },
-            { "text": "Mesa de jantar", "pts": 20 },
-            { "text": "Tapete", "pts": 15 },
-            { "text": "Estante", "pts": 10 }
-          ]
-        },
-        {
-          "question": "Um motivo comum para chegar atrasado ao trabalho?",
-          "answers": [
-            { "text": "Trânsito", "pts": 40 },
-            { "text": "Acordar tarde", "pts": 25 },
-            { "text": "Problemas com transportes", "pts": 15 },
-            { "text": "Chuva", "pts": 10 },
-            { "text": "Esquecer algo em casa", "pts": 10 }
-          ]
-        },
-        {
-          "question": "Algo que se leva para a praia?",
-          "answers": [
-            { "text": "Toalha", "pts": 35 },
-            { "text": "Protetor solar", "pts": 30 },
-            { "text": "Chapéu", "pts": 15 },
-            { "text": "Guarda-sol", "pts": 10 },
-            { "text": "Garrafa de água", "pts": 10 }
-          ]
-        },
-        {
-          "question": "Algo que se encontra num frigorífico?",
-          "answers": [
-            { "text": "Leite", "pts": 30 },
-            { "text": "Ovos", "pts": 25 },
-            { "text": "Iogurtes", "pts": 20 },
-            { "text": "Queijo", "pts": 15 },
-            { "text": "Legumes", "pts": 10 }
-          ]
-        }      
+    {
+      "question": "Algo que se leva para a praia",
+      "answers": [
+        { "text": "Toalha", "pts": 35 },
+        { "text": "Protetor solar", "pts": 30 },
+        { "text": "Chapéu", "pts": 15 },
+        { "text": "Guarda-sol", "pts": 10 },
+        { "text": "Garrafa de água", "pts": 10 }
+      ]
+    },
+    {
+      "question": "Um motivo para chegar atrasado ao trabalho",
+      "answers": [
+        { "text": "Trânsito", "pts": 40 },
+        { "text": "Acordar tarde", "pts": 25 },
+        { "text": "Transportes atrasados", "pts": 15 },
+        { "text": "Chuva", "pts": 10 },
+        { "text": "Problema no carro", "pts": 10 }
+      ]
+    },
+    {
+      "question": "Algo que se encontra num frigorífico",
+      "answers": [
+        { "text": "Leite", "pts": 30 },
+        { "text": "Ovos", "pts": 25 },
+        { "text": "Iogurtes", "pts": 20 },
+        { "text": "Queijo", "pts": 15 },
+        { "text": "Legumes", "pts": 10 }
+      ]
+    },
+    {
+      "question": "Algo que as pessoas esquecem em casa",
+      "answers": [
+        { "text": "Chaves", "pts": 35 },
+        { "text": "Telemóvel", "pts": 30 },
+        { "text": "Carteira", "pts": 20 },
+        { "text": "Documentos", "pts": 10 },
+        { "text": "Óculos", "pts": 5 }
+      ]
+    },
+    {
+      "question": "Algo que se faz num domingo",
+      "answers": [
+        { "text": "Almoçar em família", "pts": 30 },
+        { "text": "Descansar", "pts": 25 },
+        { "text": "Ver televisão", "pts": 20 },
+        { "text": "Passear", "pts": 15 },
+        { "text": "Dormir até tarde", "pts": 10 }
+      ]
+    },
+    {
+      "question": "Algo que se leva numa mala de viagem",
+      "answers": [
+        { "text": "Roupa", "pts": 40 },
+        { "text": "Produtos de higiene", "pts": 25 },
+        { "text": "Carregador", "pts": 15 },
+        { "text": "Sapatos", "pts": 10 },
+        { "text": "Documentos", "pts": 10 }
+      ]
+    },
+    {
+      "question": "Algo que se faz quando está a chover",
+      "answers": [
+        { "text": "Ficar em casa", "pts": 30 },
+        { "text": "Usar guarda-chuva", "pts": 25 },
+        { "text": "Ver filmes", "pts": 20 },
+        { "text": "Dormir", "pts": 15 },
+        { "text": "Ler", "pts": 10 }
+      ]
+    },
+    {
+      "question": "Algo que se encontra numa carteira",
+      "answers": [
+        { "text": "Dinheiro", "pts": 35 },
+        { "text": "Cartões", "pts": 30 },
+        { "text": "Documentos", "pts": 20 },
+        { "text": "Moedas", "pts": 10 },
+        { "text": "Fotografias", "pts": 5 }
+      ]
+    },
+    {
+      "question": "Algo que se faz antes de ir dormir",
+      "answers": [
+        { "text": "Lavar os dentes", "pts": 40 },
+        { "text": "Ver o telemóvel", "pts": 25 },
+        { "text": "Ver televisão", "pts": 15 },
+        { "text": "Ler", "pts": 10 },
+        { "text": "Programar o despertador", "pts": 10 }
+      ]
+    },
+    {
+      "question": "Algo que se faz nas férias",
+      "answers": [
+        { "text": "Viajar", "pts": 35 },
+        { "text": "Descansar", "pts": 30 },
+        { "text": "Ir à praia", "pts": 20 },
+        { "text": "Passear", "pts": 10 },
+        { "text": "Dormir", "pts": 5 }
+      ]
+    },
+    {
+      "question": "Algo que se encontra num quarto",
+      "answers": [
+        { "text": "Cama", "pts": 40 },
+        { "text": "Roupeiro", "pts": 25 },
+        { "text": "Mesinha de cabeceira", "pts": 15 },
+        { "text": "Candeeiro", "pts": 10 },
+        { "text": "Espelho", "pts": 10 }
+      ]
+    },
+    {
+      "question": "Algo que as crianças gostam",
+      "answers": [
+        { "text": "Brinquedos", "pts": 35 },
+        { "text": "Doces", "pts": 30 },
+        { "text": "Desenhos animados", "pts": 20 },
+        { "text": "Jogos", "pts": 10 },
+        { "text": "Parques", "pts": 5 }
+      ]
+    },
+    {
+      "question": "Algo que se faz num casamento",
+      "answers": [
+        { "text": "Dançar", "pts": 30 },
+        { "text": "Comer", "pts": 25 },
+        { "text": "Tirar fotografias", "pts": 20 },
+        { "text": "Beber", "pts": 15 },
+        { "text": "Conversar", "pts": 10 }
+      ]
+    },
+    {
+      "question": "Algo que se encontra num carro",
+      "answers": [
+        { "text": "Chaves", "pts": 30 },
+        { "text": "Rádio", "pts": 25 },
+        { "text": "Cintos de segurança", "pts": 20 },
+        { "text": "Documentos", "pts": 15 },
+        { "text": "Garrafa de água", "pts": 10 }
+      ]
+    },
+    {
+      "question": "Algo que se faz quando se está doente",
+      "answers": [
+        { "text": "Descansar", "pts": 35 },
+        { "text": "Tomar medicamentos", "pts": 30 },
+        { "text": "Ir ao médico", "pts": 20 },
+        { "text": "Ficar em casa", "pts": 10 },
+        { "text": "Dormir", "pts": 5 }
+      ]
+    },
+    {
+      "question": "Algo que se faz numa festa",
+      "answers": [
+        { "text": "Dançar", "pts": 35 },
+        { "text": "Beber", "pts": 25 },
+        { "text": "Conversar", "pts": 20 },
+        { "text": "Comer", "pts": 15 },
+        { "text": "Ouvir música", "pts": 5 }
+      ]
+    },
+    {
+      "question": "Algo que se faz no ginásio",
+      "answers": [
+        { "text": "Treinar", "pts": 40 },
+        { "text": "Levantar pesos", "pts": 25 },
+        { "text": "Correr", "pts": 15 },
+        { "text": "Alongar", "pts": 10 },
+        { "text": "Tomar banho", "pts": 10 }
+      ]
+    },
+    {
+      "question": "Algo que se faz quando se tem fome",
+      "answers": [
+        { "text": "Comer", "pts": 50 },
+        { "text": "Ir ao frigorífico", "pts": 20 },
+        { "text": "Cozinhar", "pts": 15 },
+        { "text": "Pedir comida", "pts": 10 },
+        { "text": "Fazer um lanche", "pts": 5 }
+      ]
+    },
+    {
+      "question": "Algo que se faz numa viagem de avião",
+      "answers": [
+        { "text": "Dormir", "pts": 30 },
+        { "text": "Ver filmes", "pts": 25 },
+        { "text": "Ouvir música", "pts": 20 },
+        { "text": "Ler", "pts": 15 },
+        { "text": "Comer", "pts": 10 }
+      ]
+    },
+    {
+      "question": "Algo que se faz num restaurante",
+      "answers": [
+        { "text": "Comer", "pts": 40 },
+        { "text": "Beber", "pts": 25 },
+        { "text": "Conversar", "pts": 15 },
+        { "text": "Esperar pela comida", "pts": 10 },
+        { "text": "Pagar a conta", "pts": 10 }
+      ]
+    },
+    {
+      "question": "Algo que se faz no Natal",
+      "answers": [
+        { "text": "Jantar em família", "pts": 35 },
+        { "text": "Trocar presentes", "pts": 30 },
+        { "text": "Comer doces", "pts": 20 },
+        { "text": "Montar a árvore", "pts": 10 },
+        { "text": "Ver filmes", "pts": 5 }
+      ]
+    },
+    {
+      "question": "Algo que se faz num aniversário",
+      "answers": [
+        { "text": "Cantar os parabéns", "pts": 35 },
+        { "text": "Comer bolo", "pts": 30 },
+        { "text": "Receber presentes", "pts": 20 },
+        { "text": "Fazer festa", "pts": 10 },
+        { "text": "Tirar fotografias", "pts": 5 }
+      ]
+    },
+    {
+      "question": "Algo que se encontra numa mochila",
+      "answers": [
+        { "text": "Livros", "pts": 30 },
+        { "text": "Cadernos", "pts": 25 },
+        { "text": "Estojo", "pts": 20 },
+        { "text": "Garrafa de água", "pts": 15 },
+        { "text": "Lanche", "pts": 10 }
+      ]
+    },
+    {
+      "question": "Algo que se faz no verão",
+      "answers": [
+        { "text": "Ir à praia", "pts": 40 },
+        { "text": "Viajar", "pts": 25 },
+        { "text": "Férias", "pts": 15 },
+        { "text": "Piscina", "pts": 10 },
+        { "text": "Passear", "pts": 10 }
+      ]
+    },
+    {
+      "question": "Algo que se faz no inverno",
+      "answers": [
+        { "text": "Ficar em casa", "pts": 30 },
+        { "text": "Usar roupa quente", "pts": 25 },
+        { "text": "Beber bebidas quentes", "pts": 20 },
+        { "text": "Ver televisão", "pts": 15 },
+        { "text": "Dormir mais", "pts": 10 }
+      ]
+    },
+    {
+      "question": "Algo que se faz quando se está aborrecido",
+      "answers": [
+        { "text": "Ver televisão", "pts": 30 },
+        { "text": "Mexer no telemóvel", "pts": 25 },
+        { "text": "Dormir", "pts": 20 },
+        { "text": "Ouvir música", "pts": 15 },
+        { "text": "Sair de casa", "pts": 10 }
+      ]
+    },
+    {
+      "question": "Algo que se faz quando se está feliz",
+      "answers": [
+        { "text": "Sorrir", "pts": 35 },
+        { "text": "Rir", "pts": 30 },
+        { "text": "Abraçar", "pts": 20 },
+        { "text": "Celebrar", "pts": 10 },
+        { "text": "Cantar", "pts": 5 }
+      ]
+    }
   ]
   
