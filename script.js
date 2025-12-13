@@ -77,6 +77,14 @@ function updateTurnLabel() {
   turnLabel.textContent = "Time " + turn;
 }
 
+const swapTurnBtn = document.getElementById('swapTurn');
+
+swapTurnBtn.addEventListener('click', () => {
+  // alterna o turno
+  turn = (turn === "A") ? "B" : "A";
+  updateTurnLabel();
+});
+
 document.getElementById('revealBtn').addEventListener('click', () => revealNext());
 
 document.getElementById('checkBtn').addEventListener('click', () => {
