@@ -1,0 +1,18 @@
+
+  :root { font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
+  body { margin:0; padding:20px; background:#0f172a; color: #e6eef8; display:flex; justify-content:center; }
+  .board { width:100%; max-width:900px; background:linear-gradient(180deg,#0b1220,#0d1a2b); border-radius:12px; padding:20px; box-shadow: 0 10px 30px rgba(2,6,23,0.6);}
+  h1 { margin:0 0 12px 0; font-size:20px; }
+  .top { display:flex; gap:12px; align-items:center; justify-content:space-between; }
+  .scores { display:flex; gap:12px; }
+  .score { background:rgba(255,255,255,0.03); padding:10px 14px; border-radius:10px; min-width:110px; text-align:center; }
+  .question { margin:20px 0; font-size:18px; padding:12px; background:rgba(255,255,255,0.02); border-radius:8px; }
+  .answers { display:grid; grid-template-columns: repeat(auto-fill,minmax(200px,1fr)); gap:10px; margin-top:12px; }
+  .answer { background:#06203a; padding:12px; border-radius:8px; min-height:48px; display:flex; align-items:center; justify-content:space-between; cursor:pointer; transition:transform .12s; user-select:none;}
+  .answer.hidden { filter:brightness(.6); color:transparent; background: linear-gradient(90deg,#08314f,#042235); }
+  .answer.revealed { color:#fff; font-weight:600; background:linear-gradient(90deg,#0ea5a5,#0284c7); }
+  .controls { margin-top:16px; display:flex; gap:8px; flex-wrap:wrap; }
+  input[type="text"] { padding:10px; border-radius:8px; border: none; min-width:240px; }
+  button { padding:10px 12px; border-radius:8px; border:none; cursor:pointer; background:#0369a1; color:white; }
+  small { color:#9fb1c9; }
+  .team-turn { font-weight:700; }
