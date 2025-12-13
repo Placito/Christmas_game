@@ -16,5 +16,5 @@ If the team gets 3 strikes wrong, the other team can "cheat" by guessing an undi
 Repeat for several rounds; the team with the most points wins.
 
 
-### To visualiza:
-     ```python3 family_feud.py````
+### To visualize:
+     ```python3 -m http.server```
