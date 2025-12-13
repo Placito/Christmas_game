@@ -115,7 +115,13 @@ document.getElementById('checkBtn').addEventListener('click', () => {
   }
   if (!matched) {
     errorSound.play(); // Play error sound when the answer is incorrect
-    alert("Resposta não encontrada.");
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Resposta não encontrada!',
+      confirmButtonColor: '#d33',
+      confirmButtonText: 'Tentar novamente'
+    });
   }
   guessInput.value = "";
 });
