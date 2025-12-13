@@ -1,6 +1,6 @@
 [
     {
-      "question": "Coisas que as pessoas deixam no carro",
+      "question": "Coisas que as pessoas deixam no carro?",
       "answers": [
         { "text": "Telemóvel", "pts": 30 },
         { "text": "Garrafa de água", "pts": 25 },
@@ -10,7 +10,7 @@
       ]
     },
     {
-      "question": "O que se encontra em uma cozinha",
+      "question": "O que se encontra numa cozinha?",
       "answers": [
         { "text": "Fogão", "pts": 35 },
         { "text": "Frigorifico", "pts": 30 },
@@ -18,6 +18,56 @@
         { "text": "Micro-ondas", "pts": 10 },
         { "text": "Armário", "pts": 5 }
       ]
-    }
+    },
+{
+          "question": "Algo que as pessoas fazem logo ao acordar?",
+          "answers": [
+            { "text": "Tomar pequeno-almoço", "pts": 35 },
+            { "text": "Ir à casa de banho", "pts": 30 },
+            { "text": "Ver o telemóvel", "pts": 20 },
+            { "text": "Tomar banho", "pts": 10 },
+            { "text": "Desligar o despertador", "pts": 5 }
+          ]
+        },
+        {
+          "question": "Algo que se encontra numa casa portuguesa?",
+          "answers": [
+            { "text": "Sofá", "pts": 30 },
+            { "text": "Televisão", "pts": 25 },
+            { "text": "Mesa de jantar", "pts": 20 },
+            { "text": "Tapete", "pts": 15 },
+            { "text": "Estante", "pts": 10 }
+          ]
+        },
+        {
+          "question": "Um motivo comum para chegar atrasado ao trabalho?",
+          "answers": [
+            { "text": "Trânsito", "pts": 40 },
+            { "text": "Acordar tarde", "pts": 25 },
+            { "text": "Problemas com transportes", "pts": 15 },
+            { "text": "Chuva", "pts": 10 },
+            { "text": "Esquecer algo em casa", "pts": 10 }
+          ]
+        },
+        {
+          "question": "Algo que se leva para a praia?",
+          "answers": [
+            { "text": "Toalha", "pts": 35 },
+            { "text": "Protetor solar", "pts": 30 },
+            { "text": "Chapéu", "pts": 15 },
+            { "text": "Guarda-sol", "pts": 10 },
+            { "text": "Garrafa de água", "pts": 10 }
+          ]
+        },
+        {
+          "question": "Algo que se encontra num frigorífico?",
+          "answers": [
+            { "text": "Leite", "pts": 30 },
+            { "text": "Ovos", "pts": 25 },
+            { "text": "Iogurtes", "pts": 20 },
+            { "text": "Queijo", "pts": 15 },
+            { "text": "Legumes", "pts": 10 }
+          ]
+        }      
   ]
   
