@@ -85,7 +85,18 @@ swapTurnBtn.addEventListener('click', () => {
   updateTurnLabel();
 });
 
-document.getElementById('revealBtn').addEventListener('click', () => revealNext());
+const cheerSound = new Audio('static/applause.mp3'); 
+const errorSound = new Audio('static/error.mp3'); 
+
+document.getElementById('revealBtn').addEventListener('click', () => {
+    const hidden = answersEl.querySelector('.answer.hidden');
+    if (hidden) {
+        revealNext();
+        cheerSound.play(); // Play cheer sound when revealing an answer
+    } else {
+        errorSound.play(); // Play error sound if no hidden answers are left
+    }
+});
 
 document.getElementById('checkBtn').addEventListener('click', () => {
   const guess = guessInput.value.trim();
