@@ -1,0 +1,23 @@
+[
+    {
+      "question": "Coisas que as pessoas deixam no carro",
+      "answers": [
+        { "text": "Telemóvel", "pts": 30 },
+        { "text": "Garrafa de água", "pts": 25 },
+        { "text": "Óculos", "pts": 20 },
+        { "text": "Carteira", "pts": 15 },
+        { "text": "Saco de compras", "pts": 10 }
+      ]
+    },
+    {
+      "question": "O que se encontra em uma cozinha",
+      "answers": [
+        { "text": "Fogão", "pts": 35 },
+        { "text": "Frigorifico", "pts": 30 },
+        { "text": "Lava-loiça", "pts": 20 },
+        { "text": "Micro-ondas", "pts": 10 },
+        { "text": "Armário", "pts": 5 }
+      ]
+    }
+  ]
+  

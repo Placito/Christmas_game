@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Family Feud — Demo</title>
+<style>
+  :root { font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
+  body { margin:0; padding:20px; background:#0f172a; color: #e6eef8; display:flex; justify-content:center; }
+  .board { width:100%; max-width:900px; background:linear-gradient(180deg,#0b1220,#0d1a2b); border-radius:12px; padding:20px; box-shadow: 0 10px 30px rgba(2,6,23,0.6);}
+  h1 { margin:0 0 12px 0; font-size:20px; }
+  .top { display:flex; gap:12px; align-items:center; justify-content:space-between; }
+  .scores { display:flex; gap:12px; }
+  .score { background:rgba(255,255,255,0.03); padding:10px 14px; border-radius:10px; min-width:110px; text-align:center; }
+  .question { margin:20px 0; font-size:18px; padding:12px; background:rgba(255,255,255,0.02); border-radius:8px; }
+  .answers { display:grid; grid-template-columns: repeat(auto-fill,minmax(200px,1fr)); gap:10px; margin-top:12px; }
+  .answer { background:#06203a; padding:12px; border-radius:8px; min-height:48px; display:flex; align-items:center; justify-content:space-between; cursor:pointer; transition:transform .12s; user-select:none;}
+  .answer.hidden { filter:brightness(.6); color:transparent; background: linear-gradient(90deg,#08314f,#042235); }
+  .answer.revealed { color:#fff; font-weight:600; background:linear-gradient(90deg,#0ea5a5,#0284c7); }
+  .controls { margin-top:16px; display:flex; gap:8px; flex-wrap:wrap; }
+  input[type="text"] { padding:10px; border-radius:8px; border: none; min-width:240px; }
+  button { padding:10px 12px; border-radius:8px; border:none; cursor:pointer; background:#0369a1; color:white; }
+  small { color:#9fb1c9; }
+  .team-turn { font-weight:700; }
+</style>
+</head>
+<body>
+  <div class="board">
+    <div class="top">
+      <h1>Family Feud — Demo</h1>
+      <div class="scores">
+        <div class="score">Time A<br><span id="scoreA">0</span></div>
+        <div class="score">Time B<br><span id="scoreB">0</span></div>
+      </div>
+    </div>
+
+    <div class="question" id="question">Carregando pergunta...</div>
+
+    <div class="answers" id="answers"></div>
+
+    <div class="controls">
+      <div>
+        <small>Controle do host:</small><br>
+        <input id="guessInput" type="text" placeholder="Digite uma resposta (ex.: celular)">
+        <button id="checkBtn">Verificar / Revelar</button>
+        <button id="revealBtn">Revelar Próxima</button>
+      </div>
+
+      <div style="margin-left:auto">
+        <small>Turno:</small><br>
+        <div class="team-turn" id="turnLabel">Time A</div>
+        <button id="swapTurn">Trocar Vez</button>
+        <button id="nextRound">Próxima Rodada</button>
+      </div>
+    </div>
+
+    <p style="margin-top:12px"><small>Dica: clique em uma resposta revelada para marcar + pontos manualmente (útil se quiser controle manual).</small></p>
+  </div>
+
+<script>
+/* Jogo simplificado: perguntas embutidas */
+const QUESTIONS = [
+  {
+    question: "Coisas que as pessoas deixam no carro",
+    answers: [
+      {text: "Celular", pts: 30},
+      {text: "Garrafa de água", pts: 25},
+      {text: "Óculos", pts: 20},
+      {text: "Carteira", pts: 15},
+      {text: "Sacola de compras", pts: 10},
+    ]
+  },
+  {
+    question: "O que se encontra em uma cozinha",
+    answers: [
+      {text: "Fogão", pts: 35},
+      {text: "Geladeira", pts: 30},
+      {text: "Pia", pts: 20},
+      {text: "Micro-ondas", pts: 10},
+      {text: "Armário", pts: 5},
+    ]
+  }
+];
+
+let current = 0;
+let scoreA = 0, scoreB = 0;
+let turn = "A"; // A ou B
+
+const qEl = document.getElementById('question');
+const answersEl = document.getElementById('answers');
+const scoreAEl = document.getElementById('scoreA');
+const scoreBEl = document.getElementById('scoreB');
+const turnLabel = document.getElementById('turnLabel');
+const guessInput = document.getElementById('guessInput');
+
+/* util: normaliza removendo acentos, espaços e lower */
+function normalize(s) {
+  return s.normalize('NFD').replace(/\p{Diacritic}/gu, '').toLowerCase().trim();
+}
+
+function renderRound() {
+  const q = QUESTIONS[current];
+  qEl.textContent = q.question;
+  answersEl.innerHTML = "";
+  q.answers.forEach((a, i) => {
+    const div = document.createElement('div');
+    div.className = "answer hidden";
+    div.dataset.index = i;
+    div.innerHTML = `<span class="ans-text">${a.text}</span> <strong class="ans-pts">${a.pts}</strong>`;
+    // inicialmente ocultamos texto (visual)
+    // clicar revela manualmente
+    div.addEventListener('click', () => {
+      if (div.classList.contains('hidden')) {
+        revealAnswer(i);
+      } else {
+        // se já revelada, adicionar pontos ao time atual (manual)
+        addPointsToTurn(a.pts);
+      }
+    });
+    answersEl.appendChild(div);
+  });
+  updateTurnLabel();
+}
+
+function revealAnswer(index) {
+  const box = answersEl.querySelector(`.answer[data-index="${index}"]`);
+  if (!box) return;
+  box.classList.remove('hidden');
+  box.classList.add('revealed');
+}
+
+function revealNext() {
+  const hidden = answersEl.querySelector('.answer.hidden');
+  if (hidden) {
+    const idx = hidden.dataset.index;
+    revealAnswer(idx);
+  }
+}
+
+function addPointsToTurn(pts) {
+  if (turn === "A") { scoreA += pts; scoreAEl.textContent = scoreA; }
+  else { scoreB += pts; scoreBEl.textContent = scoreB; }
+}
+
+function updateTurnLabel() {
+  turnLabel.textContent = "Time " + turn;
+}
+
+document.getElementById('revealBtn').addEventListener('click', () => revealNext());
+
+document.getElementById('checkBtn').addEventListener('click', () => {
+  const guess = guessInput.value.trim();
+  if (!guess) return;
+  const n = normalize(guess);
+  const q = QUESTIONS[current];
+  let matched = false;
+  for (let i=0;i<q.answers.length;i++){
+    if (normalize(q.answers[i].text) === n) {
+      // revelar e marcar pontos
+      revealAnswer(i);
+      addPointsToTurn(q.answers[i].pts);
+      matched = true;
+      break;
+    }
+  }
+  if (!matched) {
+    alert("Resposta não encontrada (strike). Use o botão 'Trocar Vez' se quiser alternar.");
+  }
+  guessInput.value = "";
+});
+
+document.getElementById('swapTurn').addEventListener('click', () => {
+  turn = (turn === "A") ? "B" : "A";
+  updateTurnLabel();
+});
+
+document.getElementById('nextRound').addEventListener('click', () => {
+  current = (current + 1) % QUESTIONS.length;
+  renderRound();
+});
+
+renderRound();
+</script>
+</body>
+</html>
