@@ -103,17 +103,19 @@ document.getElementById('checkBtn').addEventListener('click', () => {
   const n = normalize(guess);
   const q = QUESTIONS[current];
   let matched = false;
-  for (let i=0;i<q.answers.length;i++){
+  for (let i = 0; i < q.answers.length; i++) {
     if (normalize(q.answers[i].text) === n) {
       // revelar e marcar pontos
       revealAnswer(i);
       addPointsToTurn(q.answers[i].pts);
+      cheerSound.play(); // Play cheer sound when the answer is correct
       matched = true;
       break;
     }
   }
   if (!matched) {
-    alert("Resposta não encontrada (strike). Use o botão 'Trocar Vez' se quiser alternar.");
+    errorSound.play(); // Play error sound when the answer is incorrect
+    alert("Resposta não encontrada.");
   }
   guessInput.value = "";
 });
