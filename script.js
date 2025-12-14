@@ -50,7 +50,10 @@ function renderRound() {
     const div = document.createElement('div');
     div.className = "answer hidden";
     div.dataset.index = i;
+
+    // 🔢 NUMBER + TEXT + POINTS
     div.innerHTML = `
+      <span class="ans-number">${i + 1}</span>
       <span class="ans-text">${a.text}</span>
       <strong class="ans-pts">${a.pts}</strong>
     `;
@@ -146,7 +149,7 @@ document.getElementById('checkBtn').addEventListener('click', () => {
     }
   }
 
-  // ❌ WRONG ANSWER (STRIKE)
+  // ❌ STRIKE
   if (!matched) {
     errorSound.play();
 
@@ -157,42 +160,34 @@ document.getElementById('checkBtn').addEventListener('click', () => {
     strikeImg.style.top = '50%';
     strikeImg.style.left = '50%';
     strikeImg.style.transform = 'translate(-50%, -50%)';
-    strikeImg.style.zIndex = '1000';
+    strikeImg.style.zIndex = '9999';
     strikeImg.style.width = '30rem';
-    strikeImg.style.height = 'auto';
+    strikeImg.style.pointerEvents = 'none';
 
     document.body.appendChild(strikeImg);
-
-    setTimeout(() => {
-      document.body.removeChild(strikeImg);
-    }, 2000);
+    setTimeout(() => strikeImg.remove(), 2000);
   }
 
   guessInput.value = "";
 });
 
-//To still after 3 strikes
+// 🔁 STEAL POINTS
 function stealPoints() {
   if (turn === "A") {
-    // A steals B's round points
     scoreA += roundB;
     roundB = 0;
   } else {
-    // B steals A's round points
     scoreB += roundA;
     roundA = 0;
   }
 
-  // Update UI
   scoreAEl.textContent = scoreA;
   scoreBEl.textContent = scoreB;
   scoreAEl1.textContent = roundA;
   scoreBEl1.textContent = roundB;
 }
 
-document.getElementById('stealBtn').addEventListener('click', () => {
-  stealPoints();
-});
+document.getElementById('stealBtn').addEventListener('click', stealPoints);
 
 document.getElementById('nextRound').addEventListener('click', () => {
   endRound();
