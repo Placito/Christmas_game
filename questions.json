@@ -40,6 +40,16 @@
           ]
         },
         {
+          "question": "Coisas que podem pingar?",
+          "answers": [
+            { "text": "Chuva", "pts": 35 },
+            { "text": "Torneira", "pts": 25 },
+            { "text": "Goteira no teto", "pts": 20 },
+            { "text": "Bebidas", "pts": 10 },
+            { "text": "Molho de comida", "pts": 10 }
+          ]
+        },        
+        {
           "question": "Um motivo comum para chegar atrasado ao trabalho?",
           "answers": [
             { "text": "Trânsito", "pts": 40 },
@@ -55,7 +65,7 @@
             { "text": "Toalha", "pts": 35 },
             { "text": "Protetor solar", "pts": 30 },
             { "text": "Chapéu", "pts": 15 },
-            { "text": "Guarda-sol", "pts": 10 },
+            { "text": "Chapéu de sol", "pts": 10 },
             { "text": "Garrafa de água", "pts": 10 }
           ]
         },
@@ -68,6 +78,230 @@
             { "text": "Queijo", "pts": 15 },
             { "text": "Legumes", "pts": 10 }
           ]
-        }      
+        },   
+        {
+          "question": "Quais as marcas de aguardentes mais bebidas em Portugal?",
+          "answers": [
+            { "text": "Macieira", "pts": 30 },
+            { "text": "Aguardente Bagaceira Aldeia Velha", "pts": 25 },
+            { "text": "Aguardente de Medronho (ex: Brandymel)", "pts": 20 },
+            { "text": "Aguardente Velha/Ribeiro & Ferreira (CRF)", "pts": 15 },
+            { "text": "Aguardente de Lourinhã", "pts": 10 }
+          ]
+        },           
+        {
+          "question": "Algo que tem um buraco no meio?",
+          "answers": [
+            { "text": "Donut", "pts": 35 },
+            { "text": "Anel", "pts": 25 },
+            { "text": "Pneu", "pts": 20 },
+            { "text": "CD/DVD", "pts": 10 },
+            { "text": "Argola", "pts": 10 }
+          ]
+        },
+        [
+          {
+            "question": "Coisas que as pessoas esquecem de fazer antes de sair de casa?",
+            "answers": [
+              { "text": "Fechar a porta", "pts": 30 },
+              { "text": "Apagar luzes", "pts": 25 },
+              { "text": "Desligar o fogão", "pts": 20 },
+              { "text": "Levar as chaves", "pts": 15 },
+              { "text": "Fechar janelas", "pts": 10 }
+            ]
+          },
+          {
+            "question": "Coisas que as pessoas perdem frequentemente?",
+            "answers": [
+              { "text": "Chaves", "pts": 40 },
+              { "text": "Telemóvel", "pts": 30 },
+              { "text": "Óculos", "pts": 15 },
+              { "text": "Carteira", "pts": 10 },
+              { "text": "Meias", "pts": 5 }
+            ]
+          },
+          {
+            "question": "Algo que te faz rir automaticamente?",
+            "answers": [
+              { "text": "Vídeos engraçados", "pts": 30 },
+              { "text": "Memes", "pts": 25 },
+              { "text": "Amigos a fazer palhaçadas", "pts": 20 },
+              { "text": "Filmes cómicos", "pts": 15 },
+              { "text": "Tostões", "pts": 10 }
+            ]
+          },
+          {
+            "question": "Coisas que vês no supermercado?",
+            "answers": [
+              { "text": "Frutas", "pts": 30 },
+              { "text": "Legumes", "pts": 25 },
+              { "text": "Pão", "pts": 20 },
+              { "text": "Leite", "pts": 15 },
+              { "text": "Doces", "pts": 10 }
+            ]
+          },
+          {
+            "question": "Algo que as pessoas fazem quando estão nervosas?",
+            "answers": [
+              { "text": "Roer unhas", "pts": 30 },
+              { "text": "Mexer no cabelo", "pts": 25 },
+              { "text": "Respirar fundo", "pts": 20 },
+              { "text": "Andar de um lado para o outro", "pts": 15 },
+              { "text": "Falar depressa", "pts": 10 }
+            ]
+          },
+          {
+            "question": "Tipos de comida que compras/fazes quando estás cansado?",
+            "answers": [
+              { "text": "Pizza", "pts": 35 },
+              { "text": "Sandes", "pts": 25 },
+              { "text": "Fast food", "pts": 20 },
+              { "text": "Salada", "pts": 10 },
+              { "text": "Fruta", "pts": 10 }
+            ]
+          },
+          {
+            "question": "Algo que as pessoas dizem quando acordam?",
+            "answers": [
+              { "text": "Bom dia", "pts": 30 },
+              { "text": "Ainda estou cansado", "pts": 25 },
+              { "text": "Mais cinco minutinhos", "pts": 20 },
+              { "text": "Preciso de café", "pts": 15 },
+              { "text": "O que horas são?", "pts": 10 }
+            ]
+          },
+          {
+            "question": "Lugares onde as pessoas adoram tirar fotos?",
+            "answers": [
+              { "text": "Praia", "pts": 35 },
+              { "text": "Cidade", "pts": 25 },
+              { "text": "Parque", "pts": 20 },
+              { "text": "Montanha", "pts": 10 },
+              { "text": "Casa", "pts": 10 }
+            ]
+          },
+          {
+            "question": "Algo que deprimente quando acaba?",
+            "answers": [
+              { "text": "Férias", "pts": 40 },
+              { "text": "Fim de semana", "pts": 30 },
+              { "text": "Série favorita", "pts": 15 },
+              { "text": "Chocolate", "pts": 10 },
+              { "text": "Sol", "pts": 5 }
+            ]
+          },
+          {
+            "question": "Coisas que pessoas levam para uma viagem?",
+            "answers": [
+              { "text": "Roupas", "pts": 30 },
+              { "text": "Telemóvel", "pts": 25 },
+              { "text": "Documentos", "pts": 20 },
+              { "text": "Garrafa de água", "pts": 15 },
+              { "text": "Snacks", "pts": 10 }
+            ]
+          },
+          {
+            "question": "Algo que custa muito dinheiro?",
+            "answers": [
+              { "text": "Casa", "pts": 35 },
+              { "text": "Carro", "pts": 25 },
+              { "text": "Viagem", "pts": 20 },
+              { "text": "Telemóvel", "pts": 15 },
+              { "text": "Educação", "pts": 5 }
+            ]
+          },
+          {
+            "question": "Coisas que as pessoas fazem quando estão entediadas em casa?",
+            "answers": [
+              { "text": "Ver séries", "pts": 35 },
+              { "text": "Dormir", "pts": 25 },
+              { "text": "Jogar no telemóvel", "pts": 20 },
+              { "text": "Cozinhar", "pts": 10 },
+              { "text": "Ler um livro", "pts": 10 }
+            ]
+          },
+          {
+            "question": "Algo que as pessoas escondem quando tentam surpreender alguém?",
+            "answers": [
+              { "text": "Presente", "pts": 30 },
+              { "text": "Bolo", "pts": 25 },
+              { "text": "Cartão de aniversário", "pts": 20 },
+              { "text": "Convite surpresa", "pts": 15 },
+              { "text": "Flores", "pts": 10 }
+            ]
+          },
+          {
+            "question": "Coisas que ouves quando entras numa casa?",
+            "answers": [
+              { "text": "Olá", "pts": 35 },
+              { "text": "Cachorros a ladrar", "pts": 25 },
+              { "text": "Televisão ligada", "pts": 20 },
+              { "text": "Música", "pts": 10 },
+              { "text": "Silêncio", "pts": 10 }
+            ]
+          },
+          {
+            "question": "Algo que fazes antes de dormir?",
+            "answers": [
+              { "text": "Escovar os dentes", "pts": 35 },
+              { "text": "Ver telemóvel", "pts": 25 },
+              { "text": "Ler", "pts": 20 },
+              { "text": "Tomar banho", "pts": 10 },
+              { "text": "Beber água", "pts": 10 }
+            ]
+          },
+          {
+            "question": "Coisas que as pessoas perdem num avião?",
+            "answers": [
+              { "text": "Telemóvel", "pts": 35 },
+              { "text": "Carteira", "pts": 25 },
+              { "text": "Fone ouvido", "pts": 20 },
+              { "text": "Casaco", "pts": 10 },
+              { "text": "Livro", "pts": 10 }
+            ]
+          },
+          {
+            "question": "Algo que as pessoas associam ao verão?",
+            "answers": [
+              { "text": "Praia", "pts": 40 },
+              { "text": "Sol", "pts": 30 },
+              { "text": "Gelado", "pts": 15 },
+              { "text": "Férias", "pts": 10 },
+              { "text": "Piscina", "pts": 5 }
+            ]
+          },
+          {
+            "question": "Coisas que as pessoas querem comprar no Natal?",
+            "answers": [
+              { "text": "Presentes", "pts": 40 },
+              { "text": "Roupas", "pts": 30 },
+              { "text": "Brinquedos", "pts": 15 },
+              { "text": "Electrónica", "pts": 10 },
+              { "text": "Comida/bebidas", "pts": 5 }
+            ]
+          },
+          {
+            "question": "Algo que as pessoas fazem quando chove?",
+            "answers": [
+              { "text": "Ficar em casa", "pts": 35 },
+              { "text": "Usar chapéu de chuva", "pts": 25 },
+              { "text": "Ir trabalhar na mesma", "pts": 20 },
+              { "text": "Ver TV", "pts": 10 },
+              { "text": "Ler", "pts": 10 }
+            ]
+          },
+          {
+            "question": "Coisas que te lembram férias de criança?",
+            "answers": [
+              { "text": "Praia", "pts": 30 },
+              { "text": "Avó/avô", "pts": 25 },
+              { "text": "Gelado", "pts": 20 },
+              { "text": "Brincar com amigos", "pts": 15 },
+              { "text": "Picnic", "pts": 10 }
+            ]
+          }
+        ]
+        
+        
   ]
   
