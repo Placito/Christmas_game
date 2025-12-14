@@ -138,6 +138,7 @@ document.getElementById('revealBtn').addEventListener('click', () => {
   const hidden = answersEl.querySelector('.answer.hidden');
   if (hidden) {
     revealNext();
+    hidden.querySelector('.ans-number').style.visibility = 'hidden'; // Hide the number
     cheerSound.play();
   } else {
     errorSound.play();
