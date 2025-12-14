@@ -6,133 +6,173 @@ fetch("questions.json")
   .then(data => {
     QUESTIONS = data;
     console.log("Perguntas carregadas:", QUESTIONS);
-    renderRound(); // Render the first round after loading questions
+    renderRound();
   })
   .catch(err => {
     console.error("Erro ao carregar perguntas:", err);
   });
 
-
 let current = 0;
-let scoreA = 0, scoreB = 0;
+
+// TOTAL SCORES
+let scoreA = 0;
+let scoreB = 0;
+
+// ROUND SCORES
+let roundA = 0;
+let roundB = 0;
+
 let turn = "A"; // A ou B
 
 const qEl = document.getElementById('question');
 const answersEl = document.getElementById('answers');
-const scoreAEl = document.getElementById('scoreA');
-const scoreBEl = document.getElementById('scoreB');
+const scoreAEl = document.getElementById('scoreA');   // total A
+const scoreAEl1 = document.getElementById('scoreA1'); // round A
+const scoreBEl = document.getElementById('scoreB');   // total B
+const scoreBEl1 = document.getElementById('scoreB1'); // round B
 const turnLabel = document.getElementById('turnLabel');
 const guessInput = document.getElementById('guessInput');
 
 /* util: normaliza removendo acentos, espaços e lower */
 function normalize(s) {
-  return s.normalize('NFD').replace(/\p{Diacritic}/gu, '').toLowerCase().trim();
+  return s.normalize('NFD')
+    .replace(/\p{Diacritic}/gu, '')
+    .toLowerCase()
+    .trim();
 }
 
 function renderRound() {
   const q = QUESTIONS[current];
   qEl.textContent = q.question;
   answersEl.innerHTML = "";
+
   q.answers.forEach((a, i) => {
     const div = document.createElement('div');
     div.className = "answer hidden";
     div.dataset.index = i;
-    div.innerHTML = `<span class="ans-text">${a.text}</span> <strong class="ans-pts">${a.pts}</strong>`;
-    // inicialmente ocultamos texto (visual)
-    // clicar revela manualmente
+    div.innerHTML = `
+      <span class="ans-text">${a.text}</span>
+      <strong class="ans-pts">${a.pts}</strong>
+    `;
+
     div.addEventListener('click', () => {
       if (div.classList.contains('hidden')) {
         revealAnswer(i);
       } else {
-        // se já revelada, adicionar pontos ao time atual (manual)
         addPointsToTurn(a.pts);
       }
     });
+
     answersEl.appendChild(div);
   });
+
   updateTurnLabel();
 }
 
 function revealAnswer(index) {
   const box = answersEl.querySelector(`.answer[data-index="${index}"]`);
-  if (!box) return;
+  if (!box || box.classList.contains('revealed')) return;
+
   box.classList.remove('hidden');
   box.classList.add('revealed');
 }
 
 function revealNext() {
   const hidden = answersEl.querySelector('.answer.hidden');
-  if (hidden) {
-    const idx = hidden.dataset.index;
-    revealAnswer(idx);
-  }
+  if (hidden) revealAnswer(hidden.dataset.index);
 }
 
 function addPointsToTurn(pts) {
-  if (turn === "A") { scoreA += pts; scoreAEl.textContent = scoreA; }
-  else { scoreB += pts; scoreBEl.textContent = scoreB; }
+  if (turn === "A") {
+    roundA += pts;
+    scoreAEl1.textContent = roundA;
+  } else {
+    roundB += pts;
+    scoreBEl1.textContent = roundB;
+  }
+}
+
+function endRound() {
+  scoreA += roundA;
+  scoreB += roundB;
+
+  roundA = 0;
+  roundB = 0;
+
+  scoreAEl.textContent = scoreA;
+  scoreBEl.textContent = scoreB;
+  scoreAEl1.textContent = 0;
+  scoreBEl1.textContent = 0;
 }
 
 function updateTurnLabel() {
-  turnLabel.textContent = "Time " + turn;
+  turnLabel.textContent = "Equipa " + turn;
 }
 
 const swapTurnBtn = document.getElementById('swapTurn');
-
 swapTurnBtn.addEventListener('click', () => {
-  // alterna o turno
   turn = (turn === "A") ? "B" : "A";
   updateTurnLabel();
 });
-const cheerSound = new Audio('/static/applause.mp3'); 
-const errorSound = new Audio('/static/error.mp3'); 
+
+const cheerSound = new Audio('/static/applause.mp3');
+const errorSound = new Audio('/static/error.mp3');
 
 document.getElementById('revealBtn').addEventListener('click', () => {
-    const hidden = answersEl.querySelector('.answer.hidden');
-    if (hidden) {
-        revealNext();
-        cheerSound.play(); // Play cheer sound when revealing an answer
-    } else {
-        errorSound.play(); // Play error sound if no hidden answers are left
-    }
+  const hidden = answersEl.querySelector('.answer.hidden');
+  if (hidden) {
+    revealNext();
+    cheerSound.play();
+  } else {
+    errorSound.play();
+  }
 });
 
 document.getElementById('checkBtn').addEventListener('click', () => {
   const guess = guessInput.value.trim();
   if (!guess) return;
+
   const n = normalize(guess);
   const q = QUESTIONS[current];
   let matched = false;
+
   for (let i = 0; i < q.answers.length; i++) {
     if (normalize(q.answers[i].text) === n) {
-      // revelar e marcar pontos
       revealAnswer(i);
       addPointsToTurn(q.answers[i].pts);
-      cheerSound.play(); // Play cheer sound when the answer is correct
+      cheerSound.play();
       matched = true;
       break;
     }
   }
+
+  // ❌ WRONG ANSWER (STRIKE)
   if (!matched) {
-    errorSound.play(); // Play error sound when the answer is incorrect
-    Swal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: 'Resposta não encontrada!',
-      confirmButtonColor: '#d33',
-      confirmButtonText: 'Tentar novamente'
-    });
+    errorSound.play();
+
+    const strikeImg = document.createElement('img');
+    strikeImg.src = '/static/strike.png';
+    strikeImg.alt = 'Strike!';
+    strikeImg.style.position = 'fixed';
+    strikeImg.style.top = '50%';
+    strikeImg.style.left = '50%';
+    strikeImg.style.transform = 'translate(-50%, -50%)';
+    strikeImg.style.zIndex = '1000';
+    strikeImg.style.width = '30rem';
+    strikeImg.style.height = 'auto';
+
+    document.body.appendChild(strikeImg);
+
+    setTimeout(() => {
+      document.body.removeChild(strikeImg);
+    }, 2000);
   }
+
   guessInput.value = "";
 });
 
-  // renderRound() is now called after questions are loaded in the fetch block
-  turn = (turn === "A") ? "B" : "A";
-updateTurnLabel();
-
 document.getElementById('nextRound').addEventListener('click', () => {
+  endRound();
   current = (current + 1) % QUESTIONS.length;
   renderRound();
 });
-
-renderRound();
