@@ -33,6 +33,17 @@ const scoreBEl1 = document.getElementById('scoreB1'); // round B
 const turnLabel = document.getElementById('turnLabel');
 const guessInput = document.getElementById('guessInput');
 
+//function to add strike
+let strikesA = 0;
+let strikesB = 0;
+
+const strikeAEl = document.getElementById("strikeA");
+const strikeBEl = document.getElementById("strikeB");
+function updateStrikesDisplay() {
+  strikeAEl.textContent = "Strikes: " + "X".repeat(strikesA);
+  strikeBEl.textContent = "Strikes: " + "X".repeat(strikesB);
+}
+
 /* util: normaliza removendo acentos, espaços e lower */
 function normalize(s) {
   return s.normalize('NFD')
@@ -53,16 +64,18 @@ function renderRound() {
 
     // 🔢 NUMBER + TEXT + POINTS
     div.innerHTML = `
-      <span class="ans-number">${i + 1}</span>
+      <span class="ans-number" style="display: inline-block; width: 2rem; height: 2rem; border: 2px solid black; border-radius: 50%; text-align: center; line-height: 2rem; background-color: yellow; color: black; font-weight: bold;">
+      ${i + 1}
+      </span>
       <span class="ans-text">${a.text}</span>
       <strong class="ans-pts">${a.pts}</strong>
     `;
 
     div.addEventListener('click', () => {
       if (div.classList.contains('hidden')) {
-        revealAnswer(i);
+      revealAnswer(i);
       } else {
-        addPointsToTurn(a.pts);
+      addPointsToTurn(a.pts);
       }
     });
 
