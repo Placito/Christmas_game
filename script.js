@@ -171,6 +171,29 @@ document.getElementById('checkBtn').addEventListener('click', () => {
   guessInput.value = "";
 });
 
+//To still after 3 strikes
+function stealPoints() {
+  if (turn === "A") {
+    // A steals B's round points
+    scoreA += roundB;
+    roundB = 0;
+  } else {
+    // B steals A's round points
+    scoreB += roundA;
+    roundA = 0;
+  }
+
+  // Update UI
+  scoreAEl.textContent = scoreA;
+  scoreBEl.textContent = scoreB;
+  scoreAEl1.textContent = roundA;
+  scoreBEl1.textContent = roundB;
+}
+
+document.getElementById('stealBtn').addEventListener('click', () => {
+  stealPoints();
+});
+
 document.getElementById('nextRound').addEventListener('click', () => {
   endRound();
   current = (current + 1) % QUESTIONS.length;
