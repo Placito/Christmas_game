@@ -16,5 +16,5 @@ If the team gets 3 strikes wrong, the other team can "cheat" by guessing an undi
 Repeat for several rounds; the team with the most points wins.
 
 
-### To visualize:
+### To visualize on browser:
      ```python3 -m http.server```
