@@ -67,6 +67,10 @@
     user-select:none;
     position: relative;
 }
+.answer.revealed .ans-number {
+  opacity: 0;
+  transform: scale(0.5);
+}
 .ans-number {
   position: absolute;
   top: 50%;
@@ -76,6 +80,7 @@
   font-weight: 800;
   color: rgba(255, 255, 255, 0.8);
   pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
 /* Esconde texto e pontos enquanto está hidden */

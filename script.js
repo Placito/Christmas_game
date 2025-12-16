@@ -6,11 +6,28 @@ fetch("questions.json")
   .then(data => {
     QUESTIONS = data;
     console.log("Perguntas carregadas:", QUESTIONS);
-    renderRound();
+    renderRound(); // Ensure renderRound is used to display the first round
   })
   .catch(err => {
     console.error("Erro ao carregar perguntas:", err);
   });
+
+// Example usage of endRound to ensure it's invoked
+document.getElementById('endRoundBtn').addEventListener('click', () => {
+  endRound();
+});
+
+  async function loadSynonyms() {
+  try {
+    const response = await fetch('synonyms.json');
+    if (!response.ok) throw new Error('Failed to fetch synonyms');
+    const synonyms = await response.json();
+    return synonyms;
+  } catch (err) {
+    console.error(err);
+    return {};
+  }
+}
 
 let current = 0;
 
@@ -42,7 +59,6 @@ const strikeBEl = document.getElementById("strikeB");
 function updateStrikesDisplay() {
   strikeAEl.textContent = "Strikes: " + "X".repeat(strikesA);
   strikeBEl.textContent = "Strikes: " + "X".repeat(strikesB);
-}
 
 /* util: normaliza removendo acentos, espaços e lower */
 function normalize(s) {
@@ -91,12 +107,21 @@ function revealAnswer(index) {
 
   box.classList.remove('hidden');
   box.classList.add('revealed');
+
+  // 🔥 hide the number
+  const number = box.querySelector('.ans-number');
+  if (number) number.style.display = 'none';
 }
 
 function revealNext() {
   const hidden = answersEl.querySelector('.answer.hidden');
   resetStrikes();
-  if (hidden) revealAnswer(hidden.dataset.index);
+  if (hidden) {
+    revealAnswer(hidden.dataset.index);
+    // 🔥 hide the number
+    const number = hidden.querySelector('.ans-number');
+    if (number) number.style.display = 'none';
+  }
 }
 
 function addPointsToTurn(pts) {
@@ -133,7 +158,10 @@ swapTurnBtn.addEventListener('click', () => {
 });
 
 const cheerSound = new Audio('/static/applause.mp3');
+cheerSound.onerror = () => console.error("Failed to load cheer sound.");
+
 const errorSound = new Audio('/static/error.mp3');
+errorSound.onerror = () => console.error("Failed to load error sound.");
 
 document.getElementById('revealBtn').addEventListener('click', () => {
   const hidden = answersEl.querySelector('.answer.hidden');
@@ -155,7 +183,14 @@ document.getElementById('checkBtn').addEventListener('click', () => {
   let matched = false;
 
   for (let i = 0; i < q.answers.length; i++) {
-    if (normalize(q.answers[i].text) === n) {
+    const normalizedAnswer = normalize(q.answers[i].text);
+
+    // Check if the guess is similar to the answer
+    if (
+      normalizedAnswer.includes(n) || // Partial match
+      n.includes(normalizedAnswer) || // Reverse partial match
+      levenshteinDistance(normalizedAnswer, n) <= 2 // Allow small typos
+    ) {
       revealAnswer(i);
       addPointsToTurn(q.answers[i].pts);
       cheerSound.play();
@@ -163,6 +198,32 @@ document.getElementById('checkBtn').addEventListener('click', () => {
       break;
     }
   }
+
+  if (!matched) {
+    errorSound.play();
+    wrongAnswer();
+  }
+});
+
+// Helper function to calculate Levenshtein Distance
+function levenshteinDistance(a, b) {
+  const dp = Array.from({ length: a.length + 1 }, () => Array(b.length + 1).fill(0));
+
+  for (let i = 0; i <= a.length; i++) dp[i][0] = i;
+  for (let j = 0; j <= b.length; j++) dp[0][j] = j;
+
+  for (let i = 1; i <= a.length; i++) {
+    for (let j = 1; j <= b.length; j++) {
+      if (a[i - 1] === b[j - 1]) {
+        dp[i][j] = dp[i - 1][j - 1];
+      } else {
+        dp[i][j] = Math.min(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]) + 1;
+      }
+    }
+  }
+
+  return dp[a.length][b.length];
+}
 
   // ❌ STRIKE
   if (!matched) {
@@ -184,7 +245,7 @@ document.getElementById('checkBtn').addEventListener('click', () => {
   }
 
   guessInput.value = "";
-});
+}
 
 //count strikes
 let currentTurn = "A";
