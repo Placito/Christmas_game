@@ -95,6 +95,7 @@ function revealAnswer(index) {
 
 function revealNext() {
   const hidden = answersEl.querySelector('.answer.hidden');
+  resetStrikes();
   if (hidden) revealAnswer(hidden.dataset.index);
 }
 
@@ -185,8 +186,34 @@ document.getElementById('checkBtn').addEventListener('click', () => {
   guessInput.value = "";
 });
 
+//count strikes
+let currentTurn = "A";
+let strikes = {
+  A: 0,
+  B: 0
+};
+
+function wrongAnswer() {
+  strikes[currentTurn]++;
+  updateStrikeUI();
+
+  animateStrikeToTeam(currentTurn);
+}
+
+function updateStrikeUI() {
+  document.getElementById("strikeCountA").textContent = strikes.A;
+  document.getElementById("strikeCountB").textContent = strikes.B;
+}
+//reset strikes
+function resetStrikes() {
+  strikes.A = 0;
+  strikes.B = 0;
+  updateStrikeUI();
+}
+
 // 🔁 STEAL POINTS
 function stealPoints() {
+  resetStrikes();
   if (turn === "A") {
     scoreA += roundB;
     roundB = 0;
