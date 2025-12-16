@@ -80,7 +80,7 @@
           ]
         },   
         {
-          "question": "Quais as marcas de aguardentes mais bebidas em Portugal?",
+          "question": "Quais as marcas de aguardentes mais vendidas em Portugal?",
           "answers": [
             { "text": "Macieira", "pts": 30 },
             { "text": "Aguardente Bagaceira Aldeia Velha", "pts": 25 },
