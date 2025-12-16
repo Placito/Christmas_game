@@ -2,11 +2,12 @@
     {
       "question": "Coisas que as pessoas deixam no carro?",
       "answers": [
-        { "text": "Telemóvel", "pts": 30 },
-        { "text": "Garrafa de água", "pts": 25 },
-        { "text": "Óculos", "pts": 20 },
-        { "text": "Carteira", "pts": 15 },
-        { "text": "Saco de compras", "pts": 10 }
+        { "text": "Telemóvel", "pts": 35},
+        { "text": "Garrafa de água", "pts": 30},
+        { "text": "Óculos", "pts": 25},
+        { "text": "Carteira", "pts": 20},
+        { "text": "Saco de compras", "pts": 15},
+        { "text": "Casaco", "pts": 10}
       ]
     },
     {
@@ -167,7 +168,7 @@
               { "text": "Ainda estou cansado", "pts": 25 },
               { "text": "Mais cinco minutinhos", "pts": 20 },
               { "text": "Preciso de café", "pts": 15 },
-              { "text": "O que horas são?", "pts": 10 }
+              { "text": "Que horas são?", "pts": 10 }
             ]
           },
           {
@@ -181,7 +182,7 @@
             ]
           },
           {
-            "question": "Algo que deprimente quando acaba?",
+            "question": "Algo que é deprimente quando acaba?",
             "answers": [
               { "text": "Férias", "pts": 40 },
               { "text": "Fim de semana", "pts": 30 },
