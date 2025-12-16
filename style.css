@@ -3,8 +3,8 @@
     font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; 
 }
   body { 
-    margin:0; 
-    padding:20px; 
+    margin: 0; 
+    padding: 0px;
     background:#0f172a; 
     color: #e6eef8; 
 }
@@ -26,11 +26,11 @@
     gap:12px; 
     align-items:center; 
     justify-content:space-between; 
+    margin-bottom:20px;
 }
   .scores { 
-    margin-top: 12px;
     display:flex; 
-    gap:12px;
+    gap:25px;
     justify-content: center;
     margin: auto;
     width: 100%;
@@ -39,7 +39,8 @@
     background:rgba(52, 48, 167, 0.03); 
     border-radius:10px; 
     min-width:110px; 
-    text-align:center; 
+    border: solid 1px #e6eef8;
+    border-radius: 10px;
 }
   .question { 
     margin:20px 0; 
