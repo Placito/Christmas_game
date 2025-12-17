@@ -41,6 +41,7 @@
     min-width:110px; 
     border: solid 1px #e6eef8;
     border-radius: 10px;
+    padding: 5px;
 }
   .question { 
     margin:20px 0; 
