@@ -1,1 +1,10 @@
-static/
+# Virtual environment
+venv/
+
+# Ignore specific images
+static/family.png
+static/migas.png
+
+# Python cache
+__pycache__/
+*.pyc
