@@ -139,7 +139,6 @@ function revealAnswer(index) {
 
 function revealNext() {
   const hidden = answersEl.querySelector('.answer.hidden');
-  resetStrikes();
   if (hidden) revealAnswer(hidden.dataset.index);
 }
 
@@ -212,8 +211,8 @@ function updateStrikesDisplay() {
   const strikesAEl = document.getElementById('strikesA');
   const strikesBEl = document.getElementById('strikesB');
 
-  if (strikesAEl) strikesAEl.textContent = "Strikes: " + strikes.A;
-  if (strikesBEl) strikesBEl.textContent = "Strikes: " + strikes.B;
+  if (strikesAEl) strikesAEl.textContent = strikes.A;
+  if (strikesBEl) strikesBEl.textContent = strikes.B;
 }
 
 /* ==============================
