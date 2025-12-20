@@ -176,6 +176,7 @@ function endRound() {
 
 function updateTurnLabel() {
   turnLabel.textContent = "Equipa " + turn;
+  resetStrikes();
 }
 
 /* ==============================
@@ -267,10 +268,13 @@ document.getElementById('stealBtn')?.addEventListener('click', () => {
   scoreBEl.textContent = scoreB;
   scoreAEl1.textContent = 0;
   scoreBEl1.textContent = 0;
-});
 
+  resetStrikes();
 document.getElementById('nextRound')?.addEventListener('click', () => {
   endRound();
+  resetStrikes();
   current = (current + 1) % QUESTIONS.length;
+  renderRound();
+});
   renderRound();
 });
