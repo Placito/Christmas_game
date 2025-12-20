@@ -176,7 +176,6 @@ function endRound() {
 
 function updateTurnLabel() {
   turnLabel.textContent = "Equipa " + turn;
-  resetStrikes();
 }
 
 /* ==============================
