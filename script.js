@@ -179,7 +179,7 @@ function updateTurnLabel() {
 }
 
 /* ==============================
-   STRIKES
+  STRIKES
 ============================== */
 
 function wrongAnswer() {
@@ -198,11 +198,22 @@ function wrongAnswer() {
 
   document.body.appendChild(img);
   setTimeout(() => img.remove(), 2000);
+
+  updateStrikesDisplay();
 }
 
 function resetStrikes() {
   strikes.A = 0;
   strikes.B = 0;
+  updateStrikesDisplay();
+}
+
+function updateStrikesDisplay() {
+  const strikesAEl = document.getElementById('strikesA');
+  const strikesBEl = document.getElementById('strikesB');
+
+  if (strikesAEl) strikesAEl.textContent = "Strikes: " + strikes.A;
+  if (strikesBEl) strikesBEl.textContent = "Strikes: " + strikes.B;
 }
 
 /* ==============================
