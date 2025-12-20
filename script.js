@@ -254,25 +254,30 @@ document.getElementById('checkBtn')?.addEventListener('click', () => {
   guessInput.value = "";
 });
 
-document.getElementById('stealBtn')?.addEventListener('click', () => {
-  resetStrikes();
-  if (turn === "A") scoreA += roundB;
-  else scoreB += roundA;
+/* ==============================
+  steal BUTTON
+============================== */
 
+document.getElementById('stealBtn')?.addEventListener('click', () => {
+  // Add points from the other team's round
+  if (turn === "A") {
+   scoreA += roundB + roundA;
+  } else {
+   scoreB += roundA + roundB;
+  }
+
+  // Reset round scores
   roundA = 0;
   roundB = 0;
 
+  // Update the scores on the DOM
   scoreAEl.textContent = scoreA;
   scoreBEl.textContent = scoreB;
   scoreAEl1.textContent = 0;
   scoreBEl1.textContent = 0;
 
-  resetStrikes();
-document.getElementById('nextRound')?.addEventListener('click', () => {
-  endRound();
+  // Reset strikes and move to the next question
   resetStrikes();
   current = (current + 1) % QUESTIONS.length;
-  renderRound();
-});
   renderRound();
 });
