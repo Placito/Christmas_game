@@ -4,6 +4,7 @@ venv/
 # Ignore specific images
 static/family.png
 static/migas.png
+static/Daniel.png
 
 # Python cache
 __pycache__/
